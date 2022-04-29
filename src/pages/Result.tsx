@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { useParams } from "react-router-dom";
 import { fetchWords } from "../store/reducers/ActionCreators";
+import { CircularProgress } from "@mui/material";
 
 interface ResultPageParams {
   [key: string]: string;
@@ -10,7 +11,9 @@ interface ResultPageParams {
 
 const Result: FC = () => {
   const params = useParams<ResultPageParams>();
-  const { error, words } = useAppSelector((state) => state.wordReducer);
+  const { isLoading, error, words } = useAppSelector(
+    (state) => state.wordReducer
+  );
 
   const dispatch = useAppDispatch();
 
@@ -27,11 +30,15 @@ const Result: FC = () => {
 
   return (
     <div>
-      <ul>
-        {words.map((word) => (
-          <li key={nanoid()}>{JSON.stringify(word, null, 2)}</li>
-        ))}
-      </ul>
+      {isLoading ? (
+        <CircularProgress color="secondary" />
+      ) : (
+        <ul>
+          {words.map((word) => (
+            <li key={nanoid()}>{JSON.stringify(word, null, 2)}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

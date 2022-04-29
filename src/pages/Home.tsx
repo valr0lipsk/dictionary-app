@@ -1,6 +1,13 @@
-import { CircularProgress } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  TextField,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 import { useAppSelector } from "../hooks/redux";
 
 const Home = () => {
@@ -12,11 +19,37 @@ const Home = () => {
     setValue(e.target.value);
   };
 
+  const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigate("/" + value);
+    setValue("");
+  };
+
   return (
     <div>
-      <input type="text" value={value} onChange={changeHandler} />
-      <button onClick={() => navigate("/" + value)}>Search</button>
-      {isLoading && <CircularProgress color="secondary" />}
+      <Grid
+        container
+        spacing={2}
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item xs={8} sm={10}>
+          <TextField
+            type="search"
+            variant="standard"
+            value={value}
+            onChange={changeHandler}
+            label="Enter a word"
+            fullWidth
+            sx={{ my: "1.3rem" }}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <Button variant="contained" onClick={clickHandler}>
+            Search
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 };
