@@ -3,7 +3,13 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { useParams } from "react-router-dom";
 import { fetchWords } from "../store/reducers/ActionCreators";
-import { CircularProgress } from "@mui/material";
+import {
+  Accordion,
+  AccordionSummary,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
 
 interface ResultPageParams {
   [key: string]: string;
@@ -24,7 +30,9 @@ const Result: FC = () => {
   if (error)
     return (
       <>
-        <h1>NOTHING FOUND</h1>
+        <Typography variant="h4" align="center" sx={{ mb: "0.7rem" }}>
+          Nothing found :(
+        </Typography>
       </>
     );
 
@@ -33,11 +41,20 @@ const Result: FC = () => {
       {isLoading ? (
         <CircularProgress color="secondary" />
       ) : (
-        <ul>
-          {words.map((word) => (
-            <li key={nanoid()}>{JSON.stringify(word, null, 2)}</li>
+        <>
+          <Typography variant="h4" align="center" sx={{ mb: "0.7rem" }}>
+            Word: {params.word}
+          </Typography>
+          {words.map((word, index) => (
+            <Accordion key={nanoid()}>
+              <AccordionSummary expandIcon={<ExpandMore />}>
+                <Typography>
+                  Meaning {index + 1}: {word.word}
+                </Typography>
+              </AccordionSummary>
+            </Accordion>
           ))}
-        </ul>
+        </>
       )}
     </div>
   );

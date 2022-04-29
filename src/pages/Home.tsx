@@ -1,18 +1,9 @@
-import {
-  Button,
-  CircularProgress,
-  Container,
-  Grid,
-  TextField,
-} from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import { useAppSelector } from "../hooks/redux";
 
 const Home = () => {
   const [value, setValue] = useState<string>("");
-  const { isLoading } = useAppSelector((state) => state.wordReducer);
   const navigate = useNavigate();
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
