@@ -27,6 +27,7 @@ export const wordSlice = createSlice({
     },
     usersFetchingER(state, action: PayloadAction<string>) {
       state.isLoading = false;
+      state.words = [];
       state.error = action.payload;
     },
   },
