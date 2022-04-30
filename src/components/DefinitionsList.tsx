@@ -1,10 +1,12 @@
 import {
+  Box,
   Divider,
   List,
   ListItem,
   ListItemText,
   Typography,
 } from "@mui/material";
+import { nanoid } from "nanoid";
 import React, { FC } from "react";
 import { Definition } from "../types/word";
 import CaptionBlock from "./CaptionBlock";
@@ -17,7 +19,7 @@ const DefinitionsList: FC<DListProps> = ({ definitions }) => {
   return (
     <List sx={{ width: "100%" }}>
       {definitions.map((def) => (
-        <>
+        <Box key={nanoid()}>
           <Divider />
           <ListItem sx={{ flexDirection: "column", alignItems: "flex-start" }}>
             <ListItemText primary={def.definition} />
@@ -33,7 +35,7 @@ const DefinitionsList: FC<DListProps> = ({ definitions }) => {
               <CaptionBlock title="Antonyms" items={def.antonyms} />
             ) : null}
           </ListItem>
-        </>
+        </Box>
       ))}
     </List>
   );

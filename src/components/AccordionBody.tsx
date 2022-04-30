@@ -1,4 +1,5 @@
 import { AccordionDetails, Box, Link, Typography } from "@mui/material";
+import { nanoid } from "nanoid";
 import { FC } from "react";
 import { IWord } from "../types/word";
 import MeaningsList from "./MeaningsList";
@@ -22,7 +23,7 @@ const AccordionBody: FC<ABodyProps> = ({ word }) => {
         <Typography variant="caption">
           srcs:
           {word.sourceUrls.map((s) => (
-            <Typography variant="caption" component="span">
+            <Typography key={nanoid()} variant="caption" component="span">
               <Link href={s}> {s}</Link>
             </Typography>
           ))}

@@ -10,6 +10,7 @@ import {
   Link,
   Typography,
 } from "@mui/material";
+import { nanoid } from "nanoid";
 import React, { FC, useState } from "react";
 import { Phonetic } from "../types/word";
 
@@ -36,7 +37,7 @@ const PhoneticsList: FC<PListProps> = ({ phonetics }) => {
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {phonetics.map((p) => (
-            <ListItem sx={{ pl: 4 }}>
+            <ListItem key={nanoid()} sx={{ pl: 4 }}>
               <ListItemIcon>
                 <Circle sx={{ fontSize: "11px" }} />
               </ListItemIcon>
