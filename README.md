@@ -3,8 +3,7 @@
 This project was developed with React, Redux toolkit, TypeScript, Material UI
 
 ## Preview
-<div style="text-align:center"><img src="https://user-images.githubusercontent.com/89910618/166106058-23c3d1be-13e2-4933-ad5f-c7a41b2ca962.png"/></div>
-
+![imgonline-com-ua-Resize-yC5V4WkJq8B0](https://user-images.githubusercontent.com/89910618/166107339-323c53fc-649e-4181-8bf5-f90b11844c87.png)
 
 ## Usage 
 Type a word in text field and click the search button or add word in adress bar like "/word". <br/>
