@@ -42,7 +42,7 @@ const PhoneticsList: FC<PListProps> = ({ phonetics }) => {
                 <Circle sx={{ fontSize: "11px" }} />
               </ListItemIcon>
               <ListItemText primary={p.text} />
-              {p.audio ? (
+              {p.audio && (
                 <Box display="flex" flexDirection="column">
                   <audio controls src={p.audio}>
                     Your browser does not support the
@@ -53,7 +53,7 @@ const PhoneticsList: FC<PListProps> = ({ phonetics }) => {
                     <Link href={p.sourceUrl}> {p.sourceUrl}</Link>
                   </Typography>
                 </Box>
-              ) : null}
+              )}
             </ListItem>
           ))}
         </List>

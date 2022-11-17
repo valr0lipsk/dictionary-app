@@ -1,31 +1,31 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IWord } from "../../types/word";
 
-interface UserState {
+interface AppState {
   words: IWord[];
   isLoading: boolean;
   error: string | null;
 }
 
-const initialState: UserState = {
+const initialState: AppState = {
   words: [],
   isLoading: false,
   error: null,
 };
 
 export const wordSlice = createSlice({
-  name: "user",
+  name: "word",
   initialState: initialState,
   reducers: {
-    usersFetching(state) {
+    wordsFetching(state) {
       state.isLoading = true;
     },
-    usersFetchingSUC(state, action: PayloadAction<IWord[]>) {
+    wordsFetchingSUC(state, action: PayloadAction<IWord[]>) {
       state.isLoading = false;
       state.words = action.payload;
       state.error = null;
     },
-    usersFetchingER(state, action: PayloadAction<string>) {
+    wordsFetchingER(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.words = [];
       state.error = action.payload;

@@ -15,9 +15,9 @@ const AccordionBody: FC<ABodyProps> = ({ word }) => {
       <Typography variant="h6" component="p">
         Phonetic: {word.phonetic}
       </Typography>
-      {word.phonetics.length ? (
+      {word.phonetics.length && (
         <PhoneticsList phonetics={word.phonetics} />
-      ) : null}
+      )}
       <MeaningsList meanings={word.meanings} />
       <Box>
         <Typography variant="caption">
